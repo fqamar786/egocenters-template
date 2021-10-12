@@ -24,16 +24,15 @@ print (imp)
 
 
 
-vertices = list(range(0,4039))
-random.shuffle(vertices)
-print(vertices)
 
 @pytest.mark.parametrize('execution_number', range(6))
-def test_impostor(execution_number):
+def test_impostor(execution_number):    
+    vertices = list(range(0,4039))
+    random.shuffle(vertices)
     newedges = list(map(lambda uv : (vertices[uv[0]], vertices[uv[1]]), edges))
     newpseudocenters = list(map(lambda u : vertices[u], pseudocenters))
     newimp = cc.find_impostor(newedges, newpseudocenters)
     print (str(newimp) + " " + str(vertices[real_impostor]))
-    return (newimp == vertices[real_impostor])
+    assert (newimp == vertices[real_impostor])
     
 
