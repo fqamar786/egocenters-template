@@ -23,4 +23,3 @@ def find_impostor(edgelist, pseudocenters):
             break
     
     return impostor
-
